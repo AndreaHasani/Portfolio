@@ -1,6 +1,6 @@
-$break-xs: 400px;
+$break-xs: 320px;
 $break-sm: 600px;
-$break-md: 800px;
+$break-md: 768px;
 $break-lg: 1000px;
 $break-xl: 1200px;
 $main-color: #e41b1b;
@@ -10,11 +10,11 @@ $topbar-height: 4em;
 $footbar-height: 3.5em;
 
 html {
-  color: #222;
   font-size: 1em;
   line-height: 1.4;
   position: relative;
   min-height: 100%;
+
 }
 
 ::-moz-selection,
@@ -69,8 +69,11 @@ body {
 
 .main-container {
   min-height: calc(100% - (#{$topbar-height} + #{$footbar-height}));
-  width: 90%;
   margin: 0 5%;
+}
+
+a {
+    color: brown;
 }
 
 /* ===================
