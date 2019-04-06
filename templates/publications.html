@@ -1,0 +1,15 @@
+<div id="publications">
+    <div class="header">
+	<h2>Publications</h2>
+    </div>
+    {% for item in publicationData %}
+    <div class="item">
+	<h1><a href="{{ url_for('blog_index', title=item[0]|lower|replace(' ', '-')) }}">{{ item[0] }}</a></h1>
+	<div class="summary">
+	    <p>
+		{{ item[1] }}
+	    </p>
+	</div>
+    </div>
+    {% endfor %}
+</div>

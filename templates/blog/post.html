@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+{% block header %}
+  <header>
+      <h1>{{ Title }}</h1>
+  </header>
+{% endblock %}
+
+{% block content %}
+{{ post|safe }}
+{% endblock %}
+

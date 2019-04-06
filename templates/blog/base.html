@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Nav</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!--[if lt IE 9]>
+	<script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+    <![endif]-->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/an-old-hope.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/dockerfile.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/ini.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body id="blog-site">
+    <div id="background-svg"></div>
+  {% block header %}{% endblock %}
+
+  <nav id="main">
+    <ul>
+      <li class="logo"><a href="#">Andrea Hasani</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Resume</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <div class="site-wrap">
+    {% block content %}{% endblock %}
+  </div>
+    <script>
+hljs.initHighlightingOnLoad();
+hljs.initLineNumbersOnLoad();
+    </script>
+    <footer class="footer flex" id="footer">
+        {% block footer %}
+	<div class="left flex-items">
+	    <div class="phone">
+		<a href="tel:355684812282"><img src="{{ url_for('static', filename='img/phone-call.svg')}}" /></a>
+		<a href="tel:355684812282">+355 68 4812282</a>
+	    </div>
+	    <div class="email">
+		<a href="mailto:email@andreahasani.com"><img src="{{ url_for('static', filename='img/close-envelope.svg')}}" /></a>
+		<a href="mailto:email@andreahasani.com">email@andreahasani.com</a>
+	    </div>
+	</div>
+	<div class="right flex-items">
+	    <div class="desc">
+		<p>Made with &hearts; by Andrea Hasani using velocity.js, domtastic, typed, particles and hero patterns. </p>
+	    </div>
+	    <div class="social-icons flex">
+		<div class="git">
+		    <a href="https://github.com/AndreaHasani"><img src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
+		</div>
+		<div class="linkedin">
+		    <a href="https://www.linkedin.com/in/andreahasani/"><img src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
+		</div>
+
+		<div class="skype">
+		    <a href="skype:+355684812282?chat"><img src="{{ url_for('static', filename='img/skype-logo.svg')}}" /></a>
+		</div>
+	    </div>
+	</div>
+        {% endblock %}
+    </footer>
+</body>
+</html>

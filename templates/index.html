@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
 <meta name="description" content="Zhvillues programesh i pasionuar i cili kerkon gjithmonë sfidën e ardhshme" />
+<meta name="viewport" content="width=device-width">
 {{ super() }}
 {% endblock %}
 <!--[if lt IE 8]>
@@ -12,13 +13,13 @@
 <nav class="mobile-menu">
 <label for="show-menu" class="show-menu"><span>Menu</span><div class="lines"></div></label>
 <input type="checkbox" id="show-menu">
-<a href="#" id="title">Flask Base Template</a>
+<!-- <a href="#" id="title">Flask Base Template</a> -->
 <ul id="menu">
     <li><a href="#home">Home</a></li>
     <li>			<a href="#about">About</a>		</li>
     <li>			<a href="#">Portfolio</a>		</li>
-    <li><a href="#news">News</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#about">News</a></li>
+    <li><a href="#about" id="contact_me_click">Contact</a></li>
 </ul>
 </nav>
 
@@ -34,69 +35,78 @@
 
     <div class="sector" id="about">
 	<div class="sector-wrapper">
-	    <div class="social-icons flex">
-	    <div class="git">
-		<a href="#about"><img src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
-	    </div>
-	    <div class="linkedin">
-		<a href="#about"><img src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
-	    </div>
-
-	    <div class="skype">
-		<a href="#about"><img src="{{ url_for('static', filename='img/skype-logo.svg')}}" /></a>
-	    </div>
-	    </div>
-
-
-	    <div class="header indented-top">
-		<h2>About Me</h2>
-		<h3>Andea Hasani,<wbr> Full Stack Developer</h3>
-	    </div>
-	    <div class="description indented-middle">
-		<p>
-		    Hello and welcome to my portfolio.
-		</p>
-
-		<p>
-		    My journey into computer science started when I was 7 years old and got my first computer.
-		    At the age of 10 I had enough knowlege in finding apps, scripts and configuration for applications. When I was 14 I started learning html and css.
-		    Owned my first domain when I was 16 years old on wordpress platform which pushed me into learning php so I could customize the theme.
-		</p>
-
-		<p>
-		    Over the years I've learned a few programming languages. Some of them include python, bash, javascript. Python being my strongest and I feel comfortable working with it.
-		    Since the start of my journy into programming I always loved taking new challenges and developing innovative solutions in the web and security industries.
-		</p>
-
-		<p>
-		    In my free time, I read fan-fiction books and take care of my dog.
-		</p>
-	    </div>
-	    <div class="more">
-		<h2>Navigation</h2>
-		<div class="icons flex">
-		    <div class="resume">
-	<a href="#about"><img src="{{ url_for('static', filename='img/resume.svg')}}" /></a>
-	<p>Resume</p>
+		<div class="back-btn">
+		    <a href="#about"><img src="{{ url_for('static', filename='img/left-arrow.svg')}}" /></a>
+		</div>
+		<div class="social-icons flex">
+		    <div class="git">
+			<a href="https://github.com/AndreaHasani" target="_blank"><img src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
 		    </div>
-		    <div class="publications">
-	<a href="#about"><img src="{{ url_for('static', filename='img/publications.svg')}}" /></a>
-	<p>Publications</p>
+		    <div class="linkedin">
+			<a href="https://www.linkedin.com/in/andreahasani/" target="_blank"><img src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
 		    </div>
-		    <div class="client_projects">
-	<a href="#about"><img src="{{ url_for('static', filename='img/start.svg')}}" /></a>
-	<p>Client Projects</p>
+
+		    <div class="skype">
+			<a href="skype:+355684812282?chat"><img src="{{ url_for('static', filename='img/skype-logo.svg')}}" /></a>
 		    </div>
-		    <div class="side_projects">
-	<a href="#about"><img src="{{ url_for('static', filename='img/project-management.svg')}}" /></a>
-	<p>Side Projects</p>
-		    </div>
-		    <div class="side_projects">
-	<a href="#about"><img src="{{ url_for('static', filename='img/close-envelope.svg')}}" /></a>
-	<p>Contact Me</p>
+		</div>
+	    <div class="main-pane active animated" id="main-pane">
+		<div class="header indented-top">
+		    <h2>About Me</h2>
+		    <h3>Andea Hasani,<wbr> Full Stack Developer</h3>
+		</div>
+		<div class="description indented-middle">
+		    <p>
+			Hello and welcome to my portfolio.
+		    </p>
+
+		    <p>
+			My journey into computer science started when I was 7 years old and got my first computer. At the age of 10, I had enough knowledge in finding apps, scripts and configuration for applications. When I was 14 I started learning HTML and CSS. Owned my first domain when I was 16 years old, in WordPress platform, which pushed me into learning PHP so I could customize the theme.
+		    </p>
+
+		    <p>
+			Over the years I've learned a few programming languages. Some of them include Python, bash, JavaScript, with Python being my strongest as I feel very comfortable working with it. Since the start of my journey into programming, I always loved taking new challenges and developing innovative solutions in the web and security industries.
+		    </p>
+
+		    <p>
+			In my free time, I read fan-fiction books and take care of my dog.
+		    </p>
+		</div>
+		<div class="more">
+		    <h2>Navigation</h2>
+		    <div class="icons flex">
+			<div class="resume">
+			    <a href="#about"><img src="{{ url_for('static', filename='img/resume.svg')}}" /></a>
+			    <p>Resume</p>
+			</div>
+			{% if publicationData is defined %}
+			<div class="publications">
+			    <a href="#about"><img src="{{ url_for('static', filename='img/publications.svg')}}" /></a>
+			    <p>Publications</p>
+			</div>
+			{% endif %}
+			<!-- <div class="client_projects"> -->
+			<!--     <a href="#about"><img src="{{ url_for('static', filename='img/start.svg')}}" /></a> -->
+			<!--     <p>Projects</p> -->
+			<!-- </div> -->
+			<div class="side_projects">
+			    <a href="#about"><img src="{{ url_for('static', filename='img/project-management.svg')}}" /></a>
+			    <p>Projects</p>
+			</div>
+			<div class="contact_me">
+			    <a href="#about"><img src="{{ url_for('static', filename='img/close-envelope.svg')}}" /></a>
+			    <p>Contact Me</p>
+			</div>
 		    </div>
 		</div>
 	    </div>
+	    {% include 'clientprojects.html' %}
+	    {% include 'sideprojects.html' %}
+	    {% include 'resume.html' %}
+	    {% include 'contact.html' %}
+	    {% if publicationData is defined %}
+	    {% include 'publications.html' %}
+	    {% endif %}
 	</div>
     </div>
 </div> <!-- #main-container -->
