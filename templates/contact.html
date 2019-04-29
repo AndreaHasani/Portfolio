@@ -3,18 +3,18 @@
 	<div id="form-messages"></div>
 	<form method="GET" class="contact-form row justify-content-around" action="{{ url_for('sendmail') }}">
 	    <fieldset class="col-12 col-md-4 name">
-		<input name="name" type="text" class="feedback-input" id="name" data-validate="required, name" placeholder="Your Name...">
+		<input name="name" type="text" class="feedback-input" id="name" data-validate="required, name" placeholder="Your Name..." aria-label="Input field for name">
 
 	    </fieldset>
 	    <fieldset class="col-12 col-md-4  email">
-		<input name="email" type="email" class="feedback-input" id="email" data-validate="required, email" placeholder="Your Email...">
+		<input name="email" type="email" class="feedback-input" id="email" data-validate="required, email" placeholder="Your Email..." aria-label="Input field for email">
 
 	    </fieldset>
 	    <fieldset class="col-12 col-md-4  subject">
-		<input name="subject" type="text" class="feedback-input" id="subject" data-validate="required" placeholder="Subject...">
+		<input name="subject" type="text" class="feedback-input" id="subject" data-validate="required" placeholder="Subject..."  aria-label="Input field for subject">
 	    </fieldset>
 	    <fieldset class="col-12">
-		<textarea name="message" id="message" class="feedback-input" cols="30" data-validate="required" rows="6" placeholder="Leave your message..."></textarea>
+		<textarea name="message" id="message" class="feedback-input" cols="30" data-validate="required" rows="6" placeholder="Leave your message..."  aria-label="Input field for message"></textarea>
 	    </fieldset>
 	    <fieldset class="">
 		<input name="first-name" type="text" id="first-name" placeholder="First Name...">

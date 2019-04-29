@@ -30,27 +30,27 @@
 	    <p id="typing"></p>
 	</div>
 
-	<a href="#about" id="arrow"><img src='{{ url_for('static', filename='img/down-icon.svg')}}' /></a>
+	<a href="#about" id="arrow"><img alt="Down arrow" src='{{ url_for('static', filename='img/down-icon.svg')}}' /></a>
     </div> <!-- #main -->
 
     <div class="sector" id="about">
 	<div class="sector-wrapper">
 		<div class="back-btn">
-		    <a href="#about"><img src="{{ url_for('static', filename='img/left-arrow.svg')}}" /></a>
+		    <a href="#about"><img alt="Back button" src="{{ url_for('static', filename='img/left-arrow.svg')}}" /></a>
 		</div>
 		<div class="social-icons flex">
 		    <div class="git">
-			<a href="https://github.com/AndreaHasani" target="_blank"><img src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
+			<a href="https://github.com/AndreaHasani" target="_blank"><img alt="github" src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
 		    </div>
 		    <div class="linkedin">
-			<a href="https://www.linkedin.com/in/andreahasani/" target="_blank"><img src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
+			<a href="https://www.linkedin.com/in/andreahasani/" target="_blank"><img alt="linkedin" src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
 		    </div>
 
 		    <div class="skype">
-			<a href="skype:+355684812282?chat"><img src="{{ url_for('static', filename='img/skype-logo.svg')}}" /></a>
+			<a href="skype:+355684812282?chat"><img alt="skype" src="{{ url_for('static', filename='img/skype-logo.svg')}}" /></a>
 		    </div>
 		</div>
-	    <div class="main-pane active animated" id="main-pane">
+	    <div class="main-pane pane-active animate" style="position: relative;" id="main-pane">
 		<div class="header indented-top">
 		    <h2>About Me</h2>
 		    <h3>Andea Hasani,<wbr> Full Stack Developer</h3>
@@ -76,12 +76,12 @@
 		    <h2>Navigation</h2>
 		    <div class="icons flex">
 			<div class="resume">
-			    <a href="#about"><img src="{{ url_for('static', filename='img/resume.svg')}}" /></a>
+			    <a aria-label="My Resume"><img alt='Resume Icon' src="{{ url_for('static', filename='img/resume.svg')}}" /></a>
 			    <p>Resume</p>
 			</div>
 			{% if publicationData is defined %}
 			<div class="publications">
-			    <a href="#about"><img src="{{ url_for('static', filename='img/publications.svg')}}" /></a>
+			    <a aria-label="My Publications"><img alt='Publications Icon' src="{{ url_for('static', filename='img/publications.svg')}}" /></a>
 			    <p>Publications</p>
 			</div>
 			{% endif %}
@@ -90,17 +90,16 @@
 			<!--     <p>Projects</p> -->
 			<!-- </div> -->
 			<div class="side_projects">
-			    <a href="#about"><img src="{{ url_for('static', filename='img/project-management.svg')}}" /></a>
+			    <a aria-label="My Projects"><img alt='Projects Icon'  src="{{ url_for('static', filename='img/project-management.svg')}}" /></a>
 			    <p>Projects</p>
 			</div>
 			<div class="contact_me">
-			    <a href="#about"><img src="{{ url_for('static', filename='img/close-envelope.svg')}}" /></a>
+			    <a href="#about" aria-label="Contact Me"><img alt='Contact Me Icon' src="{{ url_for('static', filename='img/close-envelope.svg')}}" /></a>
 			    <p>Contact Me</p>
 			</div>
 		    </div>
 		</div>
 	    </div>
-	    {% include 'clientprojects.html' %}
 	    {% include 'sideprojects.html' %}
 	    {% include 'resume.html' %}
 	    {% include 'contact.html' %}

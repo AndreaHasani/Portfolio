@@ -24,6 +24,7 @@ COMPRESS_MIN_SIZE = 500
 Compress(application)
 
 
+
 @application.route("/", methods=["GET", "POST"])
 def index():
     path = "./templates/blog/posts/"
