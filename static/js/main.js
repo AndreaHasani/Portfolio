@@ -88,6 +88,10 @@ $(".more .icons div > a").on("click", function (e) {
 
   if (clickedClass == "publications") {}
 
+    gtag('event', "visit", {
+	'event_category': "Panel",
+'event_label': clickedClass
+    });
   var nextPane = $("#" + clickedClass);
   var oldPane = $(".pane-active");
   oldPane.removeClass("pane-active");
