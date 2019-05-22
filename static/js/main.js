@@ -39,8 +39,8 @@ function ipLookUp () {
     xhr.onload = function() {
 	if (xhr.status === 200) {
 	    let response = JSON.parse(xhr.responseText);
-	    user_ip = response.query;
-	    user_location = response.city + ", " + response.country;
+	    user_ip = response.ip;
+	    user_location = response.city + ", " + response.country_name;
 	}
 	else {
 	    return false;
