@@ -35,7 +35,7 @@ function eraseCookie(name) {
 
 function ipLookUp () {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://ip-api.com/json');
+    xhr.open('GET', 'https://ipapi.co/json/');
     xhr.onload = function() {
 	if (xhr.status === 200) {
 	    let response = JSON.parse(xhr.responseText);
