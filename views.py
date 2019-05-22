@@ -84,14 +84,17 @@ def stats():
     for key, value in user_interaction.items():
         message += "{}: {}\n".format(key, value)
 
-    message += "\nLast panel visit by user was %s" %user_interaction.get("active_pane", "None") 
-    sendMessage('[Portfolio Stats] IP: %s' % ip, message)
-    return jsonify(status=200, data={
-        "ip": ip,
-        # "user_interaction": user_interaction,
-        "user_location": user_location,
-        "user_referrer": user_referrer
-    })
+    message += "\nLast panel visit by user was %s" % user_interaction.get("active_pane", "None")
+    try:
+        sendMessage('[Portfolio Stats] IP: %s' % ip, message)
+        return jsonify(status=200, data={
+            "ip": ip,
+            # "user_interaction": user_interaction,
+            "user_location": user_location,
+            "user_referrer": user_referrer
+        })
+    except Exception as e:
+        return jsonify(status=500, message="Email was not sent"}
 
 
 @application.route("/sendmail", methods=['GET'])
