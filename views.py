@@ -94,7 +94,7 @@ def stats():
             "user_referrer": user_referrer
         })
     except Exception as e:
-        return jsonify(status=500, message="Email was not sent"}
+        return jsonify(status=500, message="Email was not sent"})
 
 
 @application.route("/sendmail", methods=['GET'])
