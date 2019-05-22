@@ -85,8 +85,7 @@ def stats():
         message += "{}: {}\n".format(key, value)
 
     message += "\nLast panel visit by user was %s" %user_interaction.get("active_pane", "None") 
-    print(message)
-    # sendMessage('[Portfolio Stats] IP: %s' % ip, message)
+    sendMessage('[Portfolio Stats] IP: %s' % ip, message)
     return jsonify(status=200, data={
         "ip": ip,
         # "user_interaction": user_interaction,
