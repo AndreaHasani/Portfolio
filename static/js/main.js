@@ -1,8 +1,59 @@
+// Global variables because of, why not
+var user_ip, user_interaction, user_location;
+var user_referrer = document.referrer;
+user_interaction = {
+    "arrow_click": false,
+    "resume": false,
+    "publications": false,
+    "side_projects": false,
+    "contact_me": false,
+};
+
+// Cookie functions
+function setCookie(name, value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name+'=; Max-Age=-99999999;';
+}
+
+function ipLookUp () {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://ip-api.com/json');
+    xhr.onload = function() {
+	if (xhr.status === 200) {
+	    let response = JSON.parse(xhr.responseText);
+	    user_ip = response.query;
+	    user_location = response.city + ", " + response.country;
+	}
+	else {
+	    return false;
+	}
+    };
+    xhr.send();
+}
+
 $(document).ready(function () {
   var main_height = $(".sector-wrapper")[0].clientHeight;
   document.getElementsByClassName("sector-wrapper")[0].style.height = main_height + "px";
-}); // Check for mobile
-
+});
+// Check for mobile
 window.mobilecheck = function () {
   var check = false;
 
@@ -37,13 +88,9 @@ if (viewport) {
       }
     }
   }
-} // Global variables because of, why not
+}
 
-
-var stack_programming_typed;
-var figuresLeft = [];
-
-var scroll = new SmoothScroll('a[href="#about"]', {
+var scroll = new SmoothScroll('a[id="arrow"]', {
 	// Selectors
 	topOnEmptyHash: true, // Scroll to the top of the page for links with href="#"
 
@@ -87,11 +134,9 @@ $(".more .icons div > a").on("click", function (e) {
   var clickedClass = $(this).parent().attr("class");
 
   if (clickedClass == "publications") {}
+    user_interaction[clickedClass] = true;
+    user_interaction["active_pane"] = clickedClass;
 
-    gtag('event', "visit", {
-	'event_category': "Panel",
-'event_label': clickedClass
-    });
   var nextPane = $("#" + clickedClass);
   var oldPane = $(".pane-active");
   oldPane.removeClass("pane-active");
@@ -102,91 +147,11 @@ $(".back-btn").on("click", function (e) {
   e.preventDefault();
   var nextPane = $(".sector-wrapper .main-pane");
   var oldPane = $(".pane-active");
-  console.log(oldPane);
   oldPane.removeClass("pane-active");
   nextPane.addClass("pane-active");
+    user_interaction["active_pane"] = "about";
   paneNavigation(nextPane, oldPane, 1);
 });
-
-function generateRandomNumber(min_value, max_value) {
-  var random_number = Math.random() * (max_value - min_value) + min_value;
-  return Math.floor(random_number);
-}
-
-function loopFigures() {
-  if (figuresLeft.length == 0) {
-    figuresLeft = Array.from($(".items figure"));
-  }
-
-  $(".items figure").removeClass("hover");
-  var num = generateRandomNumber(0, figuresLeft.length);
-  var row = $(figuresLeft[num]);
-  row.addClass("hover");
-  figuresLeft.splice(num, 1);
-}
-
-$(document).ready(function () {
-  figuresLeft = Array.from($(".items figure"));
-  loopFigures();
-  var loopinterval = setInterval(loopFigures, 1500);
-  $(".items figure").on("mouseover", function () {
-    clearInterval(loopinterval);
-    figuresLeft = Array.from($(".items figure"));
-    $(".items figure").removeClass("hover");
-  });
-  $(".items figure").on("mouseout", function () {
-    loopFigures();
-    loopinterval = setInterval(loopFigures, 1500);
-  });
-  var type_inst = new TypeIt("#typing", {
-    loop: true,
-    strings: ["builds websites.", "builds bots.", "builds cms.", "fixes wordpress problems.", "writes api.", "writes scrapers.", "deploys docker containers.", "writes python scripts."],
-    lifeLike: true,
-    cursorChar: "",
-    breakLines: false,
-    deleteSpeed: 60,
-    nextStringDelay: [300, 1000]
-  }).go();
-});
-
-function createModal(title, images, entry) {
-  var modalHtml = " <div id = \"modal1\" class = \"modal\">\n\n                  <!--Modal content--><div class = \"post modal-content\">\n                  <span class = \"close\"> & times;\n  </ span><h1 class = 'title'> ".concat(title, "</ h1><div class = 'content'>");
-
-  if (images.length > 0) {
-    modalHtml += "<div class = 'images'>";
-
-    for (var _i = 0; _i < images.length; _i++) {
-      modalHtml += "<img src = '".concat(images[_i], "'>");
-    }
-
-    modalHtml += "</ div>";
-  }
-
-  modalHtml += "<div class = 'entry'> ".concat(entry, "</ div></ div>\n      <div class = 'bigCloseBtn'><button> Close</ button></ div></ div></ div>\n\n      </ div>");
-  $("body").append(modalHtml);
-  $("#modal1").css("display", "block");
-  $(".modal .bigCloseBtn").on("click", function () {
-    $(".modal").remove();
-  });
-}
-
-$(document).ready(function () {
-  $("figure figcaption button.popout").on("click", function (e) {
-    e.preventDefault();
-    var main = $(this).parent().parent().parent();
-    var title = main.find("figcaption h3").text();
-    var images = main.find(".hidden-info .images img").map(function (element) {
-      return element.getAttribute("src");
-    });
-    var entry = main.find(".hidden-info .entry").html();
-    createModal(title, images, entry);
-  });
-});
-$(document).on("click", function (event) {
-  if (!$(event.target).closest(".modal-content, figcaption button").length) {
-    $("body").find("#modal1").remove();
-  }
-}); // Form Ajax submit
 
 function urlConstruct(endpoint, data) {
   var url = endpoint + "?";
@@ -294,3 +259,41 @@ function ajax_get(url, callback) {
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 } // TweenLite.to(".main-pane", 0.5, {css : {maxHeight : 500}});
+
+function sendStats(arrayData){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      console.log("responseText:" + xmlhttp.responseText);
+      try {
+        var data = JSON.parse(xmlhttp.responseText);
+      } catch (err) {
+        console.log(err.message + " in " + xmlhttp.responseText);
+        return;
+      }
+    }
+  };
+
+    xmlhttp.open("POST", "/stats");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(arrayData));
+}
+
+window.onbeforeunload = function(){
+    let not_new_user = getCookie(user_ip);
+    if (not_new_user) {
+	return;
+    }
+    else {
+	setCookie(user_ip,1,7);
+      sendStats({"user_ip": user_ip, "user_location": user_location, "user_referrer": user_referrer, "user_interaction": user_interaction});
+    }
+};
+
+$(document).ready(function (e) {
+ipLookUp();
+    document.addEventListener('scrollStart', function(e) {
+	user_interaction['arrow_click'] = true;
+	user_interaction['active_pane'] = "About";
+    }, false);
+});

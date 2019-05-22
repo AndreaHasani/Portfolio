@@ -12,7 +12,7 @@ a {
 }
 
 * {
-    font-display: swap;
+  font-display: swap;
 }
 
 #particles-js {
@@ -95,12 +95,12 @@ a {
       padding: 0 5% 30px 5%;
     }
 
-    h2 {
+    .main-pane h2 {
       font-family: "Montserrat", sans-serif;
       font-weight: bold;
       font-size: calc(28px + (45 - 28) * ((100vw - 320px) / (1920 - 320)));
     }
-    h3 {
+    .main-pane h3 {
       font-family: "Roboto", sans-serif;
       font-weight: 500;
       white-space: nowrap;
@@ -163,9 +163,9 @@ a {
               );
             }
 
-	    a {
-	    cursor: pointer;
-	    }
+            a {
+              cursor: pointer;
+            }
           }
         }
       }
@@ -308,7 +308,7 @@ a {
 }
 
 #arrow {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #resume {
@@ -318,98 +318,143 @@ a {
   position: absolute;
   opacity: 0;
   transform: translateX(-50px);
+  font-family: "Roboto", sans-serif !important;
+  margin: 0 auto;
 
-  div.header {
-    width: 100%;
+    @media screen and (max-width: 600px) {
+	width: auto;
+    }
+
+  ul {
+    li {
+      margin-bottom: 0.2em;
+    }
+
+    .sep {
+      margin-bottom: 0.7em;
+    }
   }
-  .items {
-    height: 1000px;
-    justify-content: normal;
+
+  @media screen and (max-width: 500px) {
+    ul {
+      padding-inline-start: 5%;
+    }
+  }
+
+  .references {
+    text-align: center;
+    margin-top: 0.5em;
+  }
+  .top_sector {
+    border-bottom: black groove 3px;
+  }
+
+  .sector_header {
+    border-bottom: black groove 3px;
+    padding-top: 20px;
+  }
+
+  a {
+    color: black;
+  }
+
+  .user {
+    @include fluid-type(300px, 1200px, 26px, 40px);
+    margin-bottom: 0;
+
+    @media screen and (max-width: 600px) {
+text-align: center;
+    }
+  }
+
+  h1 {
+    @include fluid-type(300px, 1200px, 22px, 34px);
+    font-weight: 900;
+  }
+
+  h2 {
+    @include fluid-type(300px, 1200px, 14px, 24px);
+    font-weight: 700;
+  }
+
+  h3 {
+    @include fluid-type(300px, 1200px, 12px, 22px);
+    font-weight: 500;
+  }
+
+  h4 {
+    @include fluid-type(300px, 1200px, 12px, 22px);
+    font-weight: 400;
+  }
+
+
+
+  .info {
+    align-items: center;
+    a,
+    p,
+    i {
+      @include fluid-type(500px, 1200px, 11px, 28px);
+    }
+    padding-bottom: 0.3em;
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+    h2 {
+      margin-bottom: 0;
+    }
+
+    h2,
+    div {
+      margin-right: 3%;
+    }
+    @media screen and (max-width: 600px) {
+	text-align: center;
+	flex-wrap: wrap;
+      & > div {
+        flex: 0 0 100%;
+      }
+
+      a,
+      p,
+      i {
+        @include fluid-type(300px, 500px, 14px, 24px);
+      }
+    }
+  }
+
+  ul {
+    li {
+      @include fluid-type(300px, 1200px, 12px, 21px);
+      strong {
+        @include fluid-type(300px, 1200px, 14px, 24px);
+      }
+    }
+  }
+
+  .space_between {
+    justify-content: space-between;
+  }
+
+  
+  .item {
+    h2, h3, h4{
+      margin: 0;
+    }
+  }
+
+  .work_experience,
+  .education {
     flex-wrap: wrap;
-    flex-direction: column;
-    div.sector {
-      width: 50%;
-      flex-direction: column;
-
-      & > h2 {
-        font-size: calc(18px + (36 - 18) * ((100vw - 800px) / (1900 - 800)));
-      }
-
-      & > p,
-      li {
-        margin: 0;
-        font-size: calc(12px + (18 - 12) * ((100vw - 800px) / (1900 - 800)));
-      }
-
-      .subsector {
-        ul {
-          padding-inline-start: 1em;
-        }
-        h3 {
-          margin: 0;
-          font-size: calc(12px + (22 - 12) * ((100vw - 800px) / (1900 - 800)));
-          font-weight: bold;
-        }
-        h4 {
-          font-size: calc(10px + (18 - 10) * ((100vw - 800px) / (1900 - 800)));
-          font-weight: normal;
-          margin: 0;
-          line-height: 1.3em;
-        }
-      }
-    }
-    .number3 {
-      height: 200px;
-    }
-    .number2 {
-      height: 480px;
-    }
-
-    .number4 {
-      height: 320px;
-
-      h4 .university {
-        display: none;
-      }
-    }
-    .number5 {
-      height: 480px;
-    }
-
-    .number1 {
-      height: 300px;
-      p {
-        span {
-          font-weight: bold;
-        }
-
-        a {
-          font-weight: normal;
-          color: black;
-          padding-left: 0.5em;
-          text-decoration: none;
-
-          &:after {
-            content: " ";
-            display: block;
-            border: 2px solid black;
-            width: 60%;
-          }
-        }
-      }
-    }
-
-    .number3 {
-      padding-right: 15px;
-    }
   }
 }
 #side_projects {
   padding: 10% 5% 5% 5%;
-    position: absolute;
-    opacity: 0;
-    transform: translateX(-50px);
-    will-change: opacity, transform;
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-50px);
+  will-change: opacity, transform;
 
   .client-footer {
     text-align: center;
@@ -509,10 +554,10 @@ a {
 }
 #client_projects {
   padding: 5% 3%;
-    position: absolute;
-    opacity: 0;
-    transform: translateX(-50px);
-    will-change: opacity, transform;
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-50px);
+  will-change: opacity, transform;
 
   .client-footer {
     text-align: center;
@@ -644,10 +689,10 @@ a {
 
 #publications {
   padding: 5% 6%;
-    position: absolute;
-    opacity: 0;
-    transform: translateX(-50px);
-    will-change: opacity, transform;
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-50px);
+  will-change: opacity, transform;
 
   h2 {
     text-align: center;
@@ -787,5 +832,11 @@ a {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+  }
+}
+
+.d-flex {
+  .w-100 {
+    width: 100%;
   }
 }

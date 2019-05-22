@@ -20,7 +20,7 @@ def disposableEmail(email):
         return 0
 
 
-def sendMessage(fromEmail, subject, message):
+def sendMessage(subject, message, fromEmail="email@andreahasani.com"):
     msg = MIMEText(message)
     msg['From'] = fromEmail
     msg['To'] = "email@andreahasani.com"

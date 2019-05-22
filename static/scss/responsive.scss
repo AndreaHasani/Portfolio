@@ -89,19 +89,6 @@ Media Queries
 
       #resume {
         padding: 5% 3%;
-
-        .items {
-          .sector {
-            .subsector {
-              h3 .university {
-                display: none;
-              }
-              h4 .university {
-                display: inline-block;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -291,102 +278,6 @@ Media Queries
 
       #resume {
         padding: 5% 6%;
-
-        .header {
-          h2 {
-            text-align: center;
-            font-size: calc(22px + (40 - 22) * ((100vw - 320px) / (768 - 320)));
-            margin-bottom: 0.4em;
-          }
-
-          h3 {
-            text-align: center;
-            font-size: calc(18px + (36 - 18) * ((100vw - 320px) / (768 - 320)));
-            margin-top: 0;
-          }
-        }
-
-        .items {
-          height: auto;
-          h2 {
-            text-align: center;
-          }
-
-          .sector {
-            .subsector {
-              h3 {
-                font-size: calc(
-                  12px + (18 - 12) * ((100vw - 320px) / (768 - 320))
-                );
-                white-space: inherit;
-              }
-            }
-            h2 {
-              font-size: calc(
-                20px + (36 - 20) * ((100vw - 320px) / (768 - 320))
-              );
-            }
-            width: 100%;
-            height: auto;
-
-            & > p,
-            li,
-            .subsector h4 {
-              font-size: calc(
-                12px + (18 - 12) * ((100vw - 320px) / (768 - 320))
-              );
-            }
-          }
-
-          .number2 {
-            justify-content: space-evenly;
-            .subsector {
-              width: auto !important;
-            }
-          }
-
-          .number1 {
-            text-align: center;
-
-            a:after {
-              margin: 0 auto;
-            }
-          }
-
-          .number3 {
-            text-align: center;
-          }
-
-          .number4 {
-            ul {
-              padding-top: 1em;
-            }
-          }
-
-          .number2,
-          .number4 {
-            flex-direction: row;
-            flex-wrap: wrap;
-
-            h2 {
-              width: 100%;
-            }
-
-            .subsector {
-              width: 50%;
-
-              h3 {
-                font-size: calc(
-                  12px + (18 - 12) * ((100vw - 320px) / (768 - 320))
-                );
-              }
-
-              h4 {
-                height: 60px;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -475,6 +366,13 @@ Media Queries
 }
 
 @media only screen and (max-width: $break-sm) {
+    .main-container #about {
+      .sector-wrapper {
+        .more .icons {
+          width: 90%;
+        }
+      }
+    }
   #side_projects {
     .items {
       .left {
@@ -499,17 +397,6 @@ Media Queries
 
     a img {
       bottom: 20%;
-    }
-  }
-  #resume .items .number1 p {
-    a:after {
-      width: 80%;
-    }
-  }
-  .main-container #about {
-    .sector-wrapper {
-      .more .icons {
-      }
     }
   }
 }

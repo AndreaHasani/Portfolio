@@ -24,7 +24,6 @@ COMPRESS_MIN_SIZE = 500
 Compress(application)
 
 
-
 @application.route("/", methods=["GET", "POST"])
 def index():
     path = "./templates/blog/posts/"
@@ -67,6 +66,35 @@ def blog_index(title):
         raise
 
 
+@application.route("/stats", methods=['POST'])
+def stats():
+    data = request.get_json()
+    ip = data['user_ip']
+    user_interaction = data.get('user_interaction')
+    user_location = data.get('user_location')
+    user_referrer = data.get('user_referrer', "None")
+    message = "User Data:\n"
+    message += "-------------------\n"
+    message += "IP: %s\n" % ip
+    message += "Location: %s\n" % user_location
+    message += "Referrer: %s\n" % (user_referrer if user_referrer else "None")
+    message += "\n"
+    message += "User interaction:\n"
+    message += "-------------------\n"
+    for key, value in user_interaction.items():
+        message += "{}: {}\n".format(key, value)
+
+    message += "\nLast panel visit by user was %s" %user_interaction.get("active_pane", "None") 
+    print(message)
+    # sendMessage('[Portfolio Stats] IP: %s' % ip, message)
+    return jsonify(status=200, data={
+        "ip": ip,
+        # "user_interaction": user_interaction,
+        "user_location": user_location,
+        "user_referrer": user_referrer
+    })
+
+
 @application.route("/sendmail", methods=['GET'])
 def sendmail():
     submitted = request.cookies.get('submitted')
@@ -95,7 +123,7 @@ def sendmail():
 
         else:
             try:
-                sendMessage(email, '[%s] %s' % (name, subject), message)
+                sendMessage('[%s] %s' % (name, subject), message, email=email)
                 msg = "<p>Thank you for contacting me. I will get back to you in 24 hours.</p>"
                 code = 200
             except:
