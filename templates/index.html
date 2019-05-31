@@ -10,17 +10,16 @@
 
 {% block content %}
 <div id="particles-js"></div>
-<nav class="mobile-menu">
-<label for="show-menu" class="show-menu"><span>Menu</span><div class="lines"></div></label>
-<input type="checkbox" id="show-menu">
-<!-- <a href="#" id="title">Flask Base Template</a> -->
-<ul id="menu">
-    <li><a href="#home">Home</a></li>
-    <li>			<a href="#about">About</a>		</li>
-    <li>			<a href="#">Portfolio</a>		</li>
-    <li><a href="#about">News</a></li>
-    <li><a href="#about" id="contact_me_click">Contact</a></li>
-</ul>
+<nav class="navbar" id= "nav">
+    <a href="#about" class="nav_a">About</a>
+    <a href="#about" class="nav_a" data-goto="publications">Publications</a>
+    <a href="#about" class="nav_a" data-goto="side_projects">Projects</a>
+    <a href="#about" class="nav_a" data-goto="contact_me">Contact</a>
+    <div id="navbar_icon" class="icon" onclick="displayMenu()">
+	<div class="bar1"></div>
+	<div class="bar2"></div>
+	<div class="bar3"></div>
+    </div>
 </nav>
 
 <div class="main-container">
@@ -30,7 +29,7 @@
 	    <p id="typing"></p>
 	</div>
 
-	<a href="#about" id="arrow"><img alt="Down arrow" src='{{ url_for('static', filename='img/down-icon.svg')}}' /></a>
+	<a href="#about" class="nav_a" id="arrow"><img alt="Down arrow" src='{{ url_for('static', filename='img/down-icon.svg')}}' /></a>
     </div> <!-- #main -->
 
     <div class="sector" id="about">

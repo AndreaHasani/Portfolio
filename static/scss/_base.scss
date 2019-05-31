@@ -67,6 +67,10 @@ body {
   min-height: 100%;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .main-container {
   min-height: calc(100% - (#{$topbar-height} + #{$footbar-height}));
   margin: 0 5%;

@@ -137,6 +137,54 @@ Media Queries
 
 @media only screen and (max-width: $break-md) {
 
+    nav {
+	a {
+	    display: none;
+	}
+	& > .icon {
+	    float: right;
+	    display: block;
+	}
+    }
+
+    nav.responsive {
+	position: relative;
+	height: 300px;
+	float: none;
+	a {
+	    @include fluid-type(300px, 1920px, 20px, 30px);
+	    &.icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	    }
+	    float: none;
+	    display: block;
+	    text-align: center;
+	    padding-left: 20px;
+	}
+	.dropdown {
+	    float: none;
+	}
+	.drop-content {
+	    position: relative;
+	    padding-left: 30px;
+	    padding-right: 30px;
+	    background-color: rgba(179, 167, 167, 0.5);
+	    a {
+		border-top: 1px solid #fff;
+	    }
+	}
+	.dropdown .drop {
+	    display: block;
+	    width: 100%;
+	    text-align: left;
+	    border-top: 1px solid #fff;
+	    &:hover {
+		background-color: rgba(179, 167, 167, 0.5);
+	    }
+	}
+    }
   #footer {
     padding: 5%;
     flex-wrap: wrap;
@@ -153,11 +201,9 @@ Media Queries
       .desc {
         width: 100%;
         text-align: center;
-        font-size: calc(10px + (26 - 10) * ((100vw - 320px) / (768 - 320)));
       }
       .social-icons {
         margin: 0 auto;
-        font-size: calc(12px + (20 - 12) * ((100vw - 320px) / (768 - 320)));
       }
     }
     .left {
@@ -242,7 +288,7 @@ Media Queries
     display: none;
   }
   #publications {
-    .bottom {
+    .botttom {
       display: none;
     }
 
