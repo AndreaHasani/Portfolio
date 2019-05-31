@@ -5,6 +5,7 @@ nav {
   float: right;
   a {
       font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 768)));
+      @include fluid-type(768px, 1920px, 20px, 30px);
     float: left;
     display: block;
     color: #fff;

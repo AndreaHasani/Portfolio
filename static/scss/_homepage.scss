@@ -98,13 +98,13 @@ a {
     .main-pane h2 {
       font-family: "Montserrat", sans-serif;
       font-weight: bold;
-      font-size: calc(28px + (45 - 28) * ((100vw - 320px) / (1920 - 320)));
+      @include fluid-type(300px, 1920px, 28px, 45px);
     }
     .main-pane h3 {
       font-family: "Roboto", sans-serif;
       font-weight: 500;
       white-space: nowrap;
-      font-size: calc(14px + (30 - 14) * ((100vw - 320px) / (1920 - 320)));
+      @include fluid-type(300px, 1920px, 14px, 30px);
     }
 
     .sector-wrapper {
@@ -158,9 +158,7 @@ a {
             p {
               padding-top: 10px;
               text-align: center;
-              font-size: calc(
-                14px + (20 - 10) * ((100vw - 320px) / (1920 - 320))
-              );
+	      @include fluid-type(300px, 1920px, 14px, 20px);
             }
 
             a {
@@ -224,7 +222,7 @@ a {
 }
 
 .form-div {
-  font-size: calc(6px + (18 - 6) * ((100vw - 320px) / (1900 - 320)));
+  @include fluid-type(300px, 1920px, 6px, 18px);
   textarea {
     resize: none;
   }
@@ -460,7 +458,7 @@ text-align: center;
     text-align: center;
     padding-top: 20px;
     font-weight: 500;
-    font-size: calc(12px + (24 - 12) * ((100vw - 300px) / (1920 - 300)));
+    @include fluid-type(300px, 1920px, 12px, 24px);
 
     a {
       color: brown;
@@ -469,7 +467,7 @@ text-align: center;
 
   .items {
     justify-content: space-evenly;
-    font-size: calc(10px + (20 - 10) * ((100vw - 600px) / (1900 - 300)));
+    @include fluid-type(300px, 1920px, 10px, 20px);
     .project {
       &:nth-child(n + 2) {
         margin-top: 4%;
@@ -576,7 +574,7 @@ text-align: center;
       }
     }
     figcaption {
-      font-size: calc(12px + (18 - 12) * ((100vw - 1200px) / (1920 - 1200)));
+      @include fluid-type(1200px, 1920px, 12px, 18px);
       width: 100%;
       bottom: 0;
       opacity: 0;
@@ -780,19 +778,19 @@ text-align: center;
   }
 
   .info {
-    font-size: calc(8px + (15 - 8) * ((100vw - 300px) / (1000 - 300)));
+    @include fluid-type(300px, 1000px, 8px, 15px);
   }
 
   .title {
     line-height: 1em;
-    font-size: calc(25px + (30 - 25) * ((100vw - 300px) / (1000 - 300)));
+    @include fluid-type(300px, 1000px, 25px, 30px);
     color: #000;
     text-align: center;
     padding: 0 5%;
   }
 
   .entry {
-    font-size: calc(10px + (14 - 10) * ((100vw - 300px) / (1000 - 300)));
+    @include fluid-type(300px, 1000px, 10px, 14px);
 
     p {
       margin: 0;
