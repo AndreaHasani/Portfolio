@@ -99,19 +99,19 @@ function paneNavigation(nextPane, oldPane, from) {
     oldPane[0].classList.add("out-transition");
     oldPane[0].classList.remove("animate");
   }, 0);
-  setTimeout(function () {
-    nextPane[0].style.position = "relative";
-    nextPane[0].classList.remove("out-transition");
-    nextPane[0].classList.add("in-transition");
-    nextPane[0].classList.add("animate");
-  }, 600);
-  $(".sector-wrapper")[0].style.height = nextPane[0].clientHeight + "px";
+    $(".sector-wrapper")[0].style.height = nextPane[0].clientHeight + "px";
+    setTimeout(function () {
+	nextPane[0].style.position = "relative";
+	nextPane[0].classList.remove("out-transition");
+	nextPane[0].classList.add("in-transition");
+	nextPane[0].classList.add("animate");
+    }, 300);
 
   if (from == 0) {
-    setTimeout(function () {
-      $(".back-btn")[0].classList.add("in-transition");
-      $(".back-btn")[0].classList.add("animate");
-    }, 600);
+      setTimeout(function () {
+	  $(".back-btn")[0].classList.add("in-transition");
+	  $(".back-btn")[0].classList.add("animate");
+      }, 300);
   } else {
     $(".back-btn")[0].classList.add("out-transition");
     $(".back-btn")[0].classList.remove("animate");
