@@ -137,55 +137,14 @@ Media Queries
 
 @media only screen and (max-width: $break-md) {
 
-    nav {
-	a {
-	    display: none;
-	}
-	& > .icon {
-	    float: right;
-	    display: block;
-	}
-    }
+.nav_mobile_menu {
+    display: block;
+}
 
-    nav.responsive {
-	margin: 0;
-	position: relative;
-	height: 300px;
-	float: none;
-	a {
-	    @include fluid-type(300px, 1920px, 20px, 30px);
-	    &.icon {
-		position: absolute;
-		right: 0;
-		top: 0;
-	    }
-	    float: none;
-	    display: block;
-	    text-align: center;
-	    padding-left: 20px;
-	}
-	.dropdown {
-	    float: none;
-	}
-	.drop-content {
-	    position: relative;
-	    padding-left: 30px;
-	    padding-right: 30px;
-	    background-color: rgba(179, 167, 167, 0.5);
-	    a {
-		border-top: 1px solid #fff;
-	    }
-	}
-	.dropdown .drop {
-	    display: block;
-	    width: 100%;
-	    text-align: left;
-	    border-top: 1px solid #fff;
-	    &:hover {
-		background-color: rgba(179, 167, 167, 0.5);
-	    }
-	}
-    }
+.nav_desktop_menu {
+    display: none;
+}
+
   #footer {
     padding: 5%;
     flex-wrap: wrap;

@@ -38,13 +38,24 @@ a {
     height: 100vh;
     position: relative;
 
-    a {
+    .text-block a, .nav_a {
       img {
         width: 60px;
         position: absolute;
         left: calc(48% - 30px);
         bottom: 15%;
       }
+    }
+    .social-icons {
+    top: 50%;
+    left: 10%;
+    position: absolute;
+	div {
+	    padding-right: 15px;
+	}
+	img {
+	    width: 30px;
+	}
     }
 
     .text-block {

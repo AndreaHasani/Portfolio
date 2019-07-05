@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
-<meta name="description" content="Zhvillues programesh i pasionuar i cili kerkon gjithmonë sfidën e ardhshme" />
+<meta name="description" content="Full Stack Developer" />
 <meta name="viewport" content="width=device-width">
 {{ super() }}
 {% endblock %}
@@ -10,17 +10,40 @@
 
 {% block content %}
 <div id="particles-js"></div>
-<nav class="navbar" id= "nav">
-    <a href="#about" class="nav_a">About</a>
-    <a href="#about" class="nav_a" data-goto="publications">Publications</a>
-    <a href="#about" class="nav_a" data-goto="side_projects">Projects</a>
-    <a href="#about" class="nav_a" data-goto="contact_me">Contact</a>
-    <div id="navbar_icon" class="icon" onclick="displayMenu()">
-	<div class="bar1"></div>
-	<div class="bar2"></div>
-	<div class="bar3"></div>
+<!-- <nav class="navbar" id= "nav"> -->
+<!--     <a href="#about" class="nav_a">About</a> -->
+<!--     <a href="#about" class="nav_a" data-goto="publications">Blog</a> -->
+<!--     <a href="#about" class="nav_a" data-goto="side_projects">Projects</a> -->
+<!--     <a href="#about" class="nav_a" data-goto="contact_me">Contact</a> -->
+<!-- </nav> -->
+
+<div class="nav_menu">
+    <div class="nav_mobile_menu js-menu">
+	<div class="menu__contents js-menu-contents">
+	    <button class="menu__toggle js-menu-toggle">
+		<div class="toggle menu__title js-menu-title">
+		    <span class="toggle-f"></span>
+		    <span class="toggle-m"></span>
+		    <span class="toggle-l"></span>
+		</div>
+	    </button>
+	    <ul class="menu__items">
+		<li class="menu__item" style="border-top: 2px solid #949090;"><a href="#about" class="nav_a" data-goto="main-pane">About</a></li>
+		<li class="menu__item"><a href="#about" class="nav_a" data-goto="publications">Blog</a></li>
+		<li class="menu__item"><a href="#about" class="nav_a" data-goto="side_projects">Projects</a></li>
+		<li class="menu__item"><a href="#about" class="nav_a" data-goto="contact_me">Contact</a></li>
+		<li class="menu__item" style="border-top: 2px solid #949090;"><a href="https://github.com/AndreaHasani" target="_blank" class="nav_a">Github</a></li>
+		<li class="menu__item"><a href="https://www.linkedin.com/in/andreahasani/" target="_blank" class="nav_a">Linkdin</a></li>
+	    </ul>
+	</div>
     </div>
-</nav>
+    <nav class="nav_desktop_menu">
+	<a href="#about" class="nav_a" data-goto="about">About</a>
+	<a href="#about" class="nav_a" data-goto="publications">Blog</a>
+	<a href="#about" class="nav_a" data-goto="side_projects">Projects</a>
+	<a href="#about" class="nav_a" data-goto="contact_me">Contact</a>
+    </nav>
+</div>
 
 <div class="main-container">
     <div class="hero sector">
@@ -57,7 +80,7 @@
 		<div class="description indented-middle">
 		    <p>
 			Hello,</br>
-My name is Andrea, and I am a full stack developer based in Albania. My background in building web applications, writing bots and scripts has helped me sharpen my skills and improving my work. 
+My name is Andrea, and I am a full stack developer based in Albania. My background in building web applications, writing bots and scripts has helped me sharpen my skills and improving my work.
 		    </p>
 
 		    <p>
@@ -78,7 +101,7 @@ My journey started when I was 7 years old from the passion and curiosity I had f
 			{% if publicationData is defined %}
 			<div class="publications">
 			    <a aria-label="My Publications"><img alt='Publications Icon' src="{{ url_for('static', filename='img/publications.svg')}}" /></a>
-			    <p>Publications</p>
+			    <p>Blog</p>
 			</div>
 			{% endif %}
 			<!-- <div class="client_projects"> -->

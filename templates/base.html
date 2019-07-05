@@ -42,7 +42,7 @@
 	    </div>
 	    <div class="social-icons flex">
 		<div class="git">
-		    <a href="https://github.com/AndreaHasani"><img alt="github" src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
+		    <a href="https://github.com/AndreaHasani"><img alt="github" target='_blank' src="{{ url_for('static', filename='img/github-logo.svg')}}" /></a>
 		</div>
 		<div class="linkedin">
 		    <a href="https://www.linkedin.com/in/andreahasani/" target="_blank"><img alt="linkedin" src="{{ url_for('static', filename='img/linkedin-button.svg')}}" /></a>
@@ -60,6 +60,8 @@
     <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.2/dist/typeit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.0.3/dist/smooth-scroll.polyfills.min.js"></script>
     <script defer type="application/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script defer type="application/javascript" src="{{ url_for('static', filename='js/css_animate.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     {% include 'gas.html' %}
 </body>
 </html>

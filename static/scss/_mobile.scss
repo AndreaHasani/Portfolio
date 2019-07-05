@@ -1,101 +1,160 @@
-nav {
+.nav_mobile_menu {
+    display: none;
+    right: 20px;
+    top: 20px;
+    z-index: 1;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: top right;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    background: #FFF;
+    will-change: transform;
+
+    &:focus {
+	outline: none;
+    }
+}
+
+.nav_desktop_menu {
     margin: 1% 2% 0 0;
-  overflow: hidden;
-  transition: height 0.4s ease-out;
-  height: 65px;
-  float: right;
-  a {
-      font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 768)));
-      @include fluid-type(768px, 1920px, 20px, 30px);
-    float: left;
-    display: block;
-    color: #fff;
-    text-align: center;
-    padding: 20px 20px;
-    text-decoration: none;
-    &:hover {
-      font-weight: bolder;
+    overflow: hidden;
+    height: 65px;
+    float: right;
+
+    a {
+	float: left;
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 20px 20px;
+	text-decoration: none;
+	@include fluid-type(768px, 1920px, 20px, 30px);
     }
+}
+
+.menu__contents {
+  transform-origin: top right;
+  will-change: transform;
+}
+
+.menu__toggle {
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+
+
+  &:focus {
+      outline: none;
   }
-  .icon {
-      z-index: 2;
-    display: none;
-    margin: 2% 3% 0 0;
-    position: absolute;
-    top: 0;
-    right: 0;
+
+  .toggle {
+      box-sizing: border-box;
+      display: inline-block;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      padding-top: 14px;
+      opacity: .9;
+      cursor: pointer;
+      z-index: 10001;
+      span {
+	  display: block;
+	  border: 2px solid #000;
+	  width: 35px;
+	  margin: auto;
+	  margin-bottom: 5px;
+	  -webkit-transform: rotate(0deg);
+	  -ms-transform: rotate(0deg);
+	  transform: rotate(0deg);
+	  -webkit-transition: all .2s;
+	  transition: all .2s;
+      }
+      &.toggle-open {
+	  .toggle-f {
+	      display: none;
+	  }
+	  .toggle-m {
+	      -webkit-transform: rotate(45deg);
+	      -ms-transform: rotate(45deg);
+	      transform: rotate(45deg);
+	      position: relative;
+	      top: 8px;
+	  }
+	  .toggle-l {
+	      -webkit-transform: rotate(-45deg);
+	      -ms-transform: rotate(-45deg);
+	      transform: rotate(-45deg);
+	  }
+      }
   }
 }
 
-.dropdown {
-  float: left;
-  overflow: hidden;
-  .drop {
-    font-size: 17px;
-    border: none;
-    outline: none;
-    color: #fff;
-    padding: 20px 20px;
-    background-color: inherit;
-    font-family: inherit;
+.menu__title {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  display: inline-block;
+  padding: 12px 22px;
+
+}
+
+.menu__items {
+    position: relative;
+    list-style: none;
+    padding: 0;
     margin: 0;
-  }
-}
+    background: #FFF;
+    z-index: 1;
 
-.drop {
-  .fa-angle-double-up {
-    display: none;
-  }
-  &:hover {
-    .fa-angle-double-down {
-      display: none;
+    a {
+	@include fluid-type(300px, 768px, 20px, 30px);
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	&:hover {
+	    font-weight: bolder;
+	}
     }
-    .fa-angle-double-up {
-      display: inline;
+    .menu__item {
+	padding: 8px 12px;
+	border-top: 1px solid #DDD;
+	text-align: center;
     }
-  }
 }
 
-.drop-content {
-  display: none;
-  position: absolute;
-  background-color: #404040;
-  min-width: 150px;
-  z-index: 1;
-  a {
-    float: none;
-    color: #fff;
-    padding: 12px, 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
+
+.menu--active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.dropdown:hover .drop-content {
-  display: block;
+.menu--expanded {
+  animation-name: menuExpandAnimation;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
 }
 
-.drop-content a:hover {
-  background-color: rgba(179, 167, 167, 0.5);
+.menu__contents--expanded {
+  animation-name: menuExpandContentsAnimation;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
 }
 
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: #fff;
-  margin: 6px 0;
-  transition: 0.4s;
+.menu--collapsed {
+  animation-name: menuCollapseAnimation;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
 }
 
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
+.menu__contents--collapsed {
+  animation-name: menuCollapseContentsAnimation;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
 }
