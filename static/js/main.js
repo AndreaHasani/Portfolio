@@ -238,7 +238,6 @@ $(document).ready(function (e) {
 });
 
 function displayMenu() {
-
     var navbar = document.getElementById("nav");
     var icon = document.getElementById("navbar_icon");
     if (navbar.className === "navbar") {
@@ -315,9 +314,15 @@ ipLookUp();
 
 
     document.addEventListener('scrollStop', function(e) {
-	console.log(nav_clicked_id);
 	if (nav_clicked_id != null) {
-	    if (nav_clicked_id == "publications") {}
+	    if (nav_clicked_id == "main-pane") {
+		if ($(".main-pane").hasClass("pane-active") == true) {
+		    return
+		};
+	    };
+	    if ($("#" + nav_clicked_id).hasClass("pane-active") == true) {
+		return 
+	    };
 	    user_interaction[nav_clicked_id] = true;
 	    user_interaction["active_pane"] = nav_clicked_id;
 
