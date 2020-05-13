@@ -125,7 +125,7 @@ def sendmail():
 
         else:
             try:
-                sendMessage('[%s] %s' % (name, subject), message, email=email)
+                sendMessage('[%s] %s' % (name, subject), message, fromEmail=email)
                 msg = "<p>Thank you for contacting me. I will get back to you in 24 hours.</p>"
                 code = 200
             except:
